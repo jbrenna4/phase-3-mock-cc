@@ -4,27 +4,30 @@ from classes.restaurant import Restaurant
 class Review:
     
     # 5 README asks for these initial attributes
-    def __init__(self, customer, restaurant, rating = 0):
+    def __init__(self, customer, restaurant, rating):
         self.customer = customer
         self.restaurant = restaurant
         self.rating = rating
 
+        # Not sure why we need these
+        self.add_customer_to_restaurant()
+        self.add_restaurant_to_customer()
+        self.add_review_to_customer()
+        self.add_review_to_restaurant()
 
     # 6 now it asks for a getter/setter for rating attribute. 
     # we we have a condition and an Exception. 
     @property
     def rating(self):
-        return self.rating
+        return self._rating
     
     @rating.setter
     def rating(self, rating):
         if rating > 0 and rating < 6:
             self._rating = rating
         else:
-            print("Your rating must be a number between 1 and 5, inclusive!")
-
-            raise Exception("Your rating must be a number between 1 and 5, inclusive!")
-        
+            print("Rating must be between 1 and 5")
+            raise Exception("Rating must be between 1 and 5")
 
     # 7 we're asked to make customer a property
     # it needs to be returned. so that's an easy getter
@@ -74,15 +77,19 @@ class Review:
         rating = property(get_rating, set_rating,)
 
 
-
+    # not sure when these functions happen
     def add_customer_to_restaurant(self):
-        pass
+        if self._customer not in self._restaurant.customers:
+            self._restaurant.customers.append(self._customer)
 
     def add_review_to_restaurant(self):
-        pass
+        self._restaurant.reviews.append(self)
 
     def add_restaurant_to_customer(self):
-        pass
+        if self._restaurant not in self._customer.restaurants:
+            self._customer.restaurants.append(self._restaurant)
 
     def add_review_to_customer(self):
-        pass
+        self._customer.reviews.append(self)
+
+

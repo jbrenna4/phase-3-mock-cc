@@ -1,7 +1,6 @@
 class Customer:
 
     # 1 just following README. We init the first and last names
-    # WE ARE FAILING THE FIRST TEST LOL - MAYBE SOMETHING WITH MY PROPERTY
     def __init__(self, first_name, last_name):
         self.first_name = first_name
         self.last_name = last_name
@@ -30,23 +29,18 @@ class Customer:
 
             raise Exception("Your first name must be a string and contain between 1 and 25 letters, inclusive!")
 
-    def get_last_name(self):
+    @property
+    def last_name(self):
         return self._last_name
     
-    def set_last_name(self, last_name):
-        if type(last_name) == str and len(last_name) <= 25:
+    @last_name.setter
+    def last_name(self, last_name):
+        if type(last_name) == str and ( len(last_name) > 0 and len(last_name) < 26 ):
             self._last_name = last_name
-    
-    last_name = property(get_last_name, set_last_name,)
+        else:
+            print("Your last name must be a string and contain between 1 and 25 letters, inclusive!")
 
-
-    # def first_name(self):
-    #     # first_name property goes here!
-    #     pass
-
-    # def last_name(self):
-    #     # last_name property goes here!
-    #     pass
+            raise Exception("Your last name must be a string and contain between 1 and 25 letters, inclusive!")
 
     def get_full_name(self):
         return f"{self._first_name} {self._last_name}"

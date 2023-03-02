@@ -10,9 +10,9 @@ class Restaurant:
             Restaurant.all.append(self)
         
         else:
-            print("Invalid name")
+            print("The restaurant name must be a string!")
 
-        raise Exception("Invalid name")
+            raise Exception("The restaurant name must be a string!")
 
         # I guess this is answering 9 and 10?? function written somewhere else?
         self.reviews = []
