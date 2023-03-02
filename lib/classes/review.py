@@ -63,20 +63,6 @@ class Review:
 
             raise Exception("Restaurant is not an instance of class Restaurant!")
 
-
-
-
-    def rating(self):
-        def get_rating(self):
-            return self._rating
-
-        def set_rating(self, rating):
-            if type(rating) == int and 1 <= (rating) <= 5:
-                self._rating = rating
-
-        rating = property(get_rating, set_rating,)
-
-
     # not sure when these functions happen
     def add_customer_to_restaurant(self):
         if self._customer not in self._restaurant.customers:
@@ -91,5 +77,3 @@ class Review:
 
     def add_review_to_customer(self):
         self._customer.reviews.append(self)
-
-
