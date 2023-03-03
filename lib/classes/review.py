@@ -48,7 +48,6 @@ class Review:
             raise Exception("Customer is not an instance of class Customer!")
 
     # 8 we're doing the same thing now with restaurant for the review.
-    # is it one underscore or two?
     @property
     def restaurant(self):
         return self._restaurant

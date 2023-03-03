@@ -1,3 +1,4 @@
+
 class Restaurant:
     all = []
 
@@ -52,6 +53,7 @@ class Restaurant:
 
     # 9 Returns a list of all reviews for that restaurant
     # Reviews must be of type Review
+    
 
     # 10 Returns a unique list of all customers who have reviewed a particular restaurant.
     # Customers must be of type Customer
