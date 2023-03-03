@@ -15,13 +15,14 @@ class Restaurant:
 
             raise Exception("The restaurant name must be a string!")
 
-        # I guess this is answering 9 and 10?? function written somewhere else?
+        # 9 and 10. Just setting up empty lists for the functions we're going to write. 
+        # 10 self.customers will be a unique list so it's function will
+        # have conditional logic in it.
         self.reviews = []
         self.customers = []
 
     # 4 now README wants that name returned. this is a getter function
     # super easy to write here with a decorator
-    # However, I'm unsure about "Should not be able to change after the restaurant is created"
     @property
     def name(self):
         return self._name
@@ -50,10 +51,3 @@ class Restaurant:
     @classmethod
     def get_all_restaurants(cls):
         return cls.all
-
-    # 9 Returns a list of all reviews for that restaurant
-    # Reviews must be of type Review
-    
-
-    # 10 Returns a unique list of all customers who have reviewed a particular restaurant.
-    # Customers must be of type Customer

@@ -9,7 +9,7 @@ class Review:
         self.restaurant = restaurant
         self.rating = rating
 
-        # Not sure why we need these
+        # we have to invoke our functions with the init
         self.add_customer_to_restaurant()
         self.add_restaurant_to_customer()
         self.add_review_to_customer()
@@ -32,7 +32,8 @@ class Review:
     # 7 we're asked to make customer a property
     # it needs to be returned. so that's an easy getter
     # then comes our first bit of Object Relationship
-    # our condition is seeing if this customer that we're passing in
+    #we imported Customer class at the top. so we have access to it now. 
+    # our condition is seeing if this customer that we're passing into Review
     #is an instance/object of Customer class. if is groovy. if not Exception time.
     @property
     def customer(self):
@@ -63,16 +64,27 @@ class Review:
             raise Exception("Restaurant is not an instance of class Restaurant!")
 
     # not sure when these functions happen
+    # WE ARE IN REVIEW - and the other two files are imported at the top
+    # populating line 22 in Restaurant
+    # if the customer isn't already in the Restaurant customer list we add it
     def add_customer_to_restaurant(self):
         if self._customer not in self._restaurant.customers:
             self._restaurant.customers.append(self._customer)
 
+    # we are populating line 21 in Restaurant
+    # it's not a unique list! so no conditions need.  
+    # we are in Review. and we're passing an entire instance/object. so we can use self
     def add_review_to_restaurant(self):
         self._restaurant.reviews.append(self)
 
+    # we are populating line 12 in Customer
+    # if the restaurance instance isn't already in the Customer restaurant list we add it
     def add_restaurant_to_customer(self):
         if self._restaurant not in self._customer.restaurants:
             self._customer.restaurants.append(self._restaurant)
 
+    # we are populating line 11 in Customer
+    # it's not a unique list! so no conditions need.  
+    # we are in Review. and we're passing an entire instance/object. so we can use self
     def add_review_to_customer(self):
         self._customer.reviews.append(self)
